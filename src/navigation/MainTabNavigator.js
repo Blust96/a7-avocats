@@ -4,7 +4,7 @@ Import
 // NodeJS
 import React from 'react';
 import { TabNavigator, StackNavigator } from 'vue-native-router';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 // Inner
 import ChatScreen from '../screens/ChatScreen';
 import NewsScreen from '../screens/NewsScreen';
@@ -18,7 +18,7 @@ export default TabNavigator(
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel: 'Chat',
                 tabBarIcon: ({ focused, tintColor }) => {
-                    return <MaterialCommunityIcons name="face-profile" size={32} color="#4286f4" />;
+                    return <Entypo name="chat" size={28} color="#4286f4" />;
                 },
             })
         },
@@ -27,7 +27,7 @@ export default TabNavigator(
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel: 'Actualités',
                 tabBarIcon: ({ focused, tintColor }) => {
-                    return <MaterialCommunityIcons name="face-profile" size={32} color="#4286f4" />;
+                    return <Entypo name="news" size={28} color="#4286f4" />;
                 },
             })
         },
@@ -36,7 +36,7 @@ export default TabNavigator(
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel: 'Suivi',
                 tabBarIcon: ({ focused, tintColor }) => {
-                    return <MaterialCommunityIcons name="face-profile" size={32} color="#4286f4" />;
+                    return <Entypo name="folder" size={28} color="#4286f4" />;
                 },
             })
         } 

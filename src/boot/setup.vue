@@ -10,15 +10,17 @@
 Import
 */
 // NodeJS
-import Vue from "vue-native-core";
-import { VueNativeBase } from "native-base";
-import { AppLoading } from "expo";
+import Vue from 'vue-native-core';
+import Vuex from 'vuex';
+import { VueNativeBase } from 'native-base';
+import { AppLoading } from 'expo';
 // Inner
-import App from "../App.vue";
+import App from '../App.vue';
 //
 
-// registering native-base components to the global scope of the Vue
+// Vue configuration
 Vue.use(VueNativeBase);
+Vue.use(Vuex);
 
 export default {
     components: { App, AppLoading },
