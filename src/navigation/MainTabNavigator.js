@@ -9,12 +9,61 @@ import { Entypo } from '@expo/vector-icons';
 import ChatScreen from '../screens/ChatScreen';
 import NewsScreen from '../screens/NewsScreen';
 import FolderTrackingScreen from '../screens/FolderTrackingScreen';
+import AppointmentScreen from '../screens/AppointmentScreen';
 //
+
+const ChatNavigation = StackNavigator(
+    {
+        Chat: { 
+            screen: ChatScreen,
+            navigationOptions: {
+                title: 'Chat'
+            }
+        },
+        Appointment: { 
+            screen: AppointmentScreen,
+            navigationOptions: {
+                title: 'Prise de rendez-vous'
+            }
+        }
+    },
+    {
+        initialRouteName: 'Chat'
+    }
+);
+
+const NewsNavigation = StackNavigator(
+    {
+        News: {
+            screen: NewsScreen,
+            navigationOptions: {
+                title: 'Actualités'
+            }
+        }
+    },
+    {
+        initialRouteName: 'News'
+    }
+);
+
+const FolderTrackingNavigation = StackNavigator(
+    {
+        FolderTracking: {
+            screen: FolderTrackingScreen,
+            navigationOptions: {
+                title: 'Suivi de dossier'
+            }
+        }
+    },
+    {
+        initialRouteName: 'FolderTracking'
+    }
+);
 
 export default TabNavigator(
     {
         ChatScreen: {
-            screen: ChatScreen,
+            screen: ChatNavigation,
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel: 'Chat',
                 tabBarIcon: ({ focused, tintColor }) => {
@@ -23,7 +72,7 @@ export default TabNavigator(
             })
         },
         NewsScreen: {
-            screen: NewsScreen,
+            screen: NewsNavigation,
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel: 'Actualités',
                 tabBarIcon: ({ focused, tintColor }) => {
@@ -32,7 +81,7 @@ export default TabNavigator(
             })
         },
         FolderTrackingScreen: {
-            screen: FolderTrackingScreen,
+            screen: FolderTrackingNavigation,
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel: 'Suivi',
                 tabBarIcon: ({ focused, tintColor }) => {
