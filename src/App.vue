@@ -13,13 +13,15 @@ Import
 import { Root } from 'native-base';
 // Inner
 import Navigation from './navigation/MainTabNavigator';
+import store from './store';
 //
 
 export default {
     components: { 
         Root,
         Navigation,
-    }
+    },
+    store,
 }
 
 </script>
