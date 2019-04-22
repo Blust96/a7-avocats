@@ -3,10 +3,16 @@
         <messages-list
             :messages="messages"
         />
-        <text-input
-            :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
-            v-model="text"
-        />
+        <view>
+            <text-input
+                :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
+                v-model="messageContent"
+            />
+            <button
+                :on-press="() => submitMessage()"
+                title="Envoyer"
+            />
+        </view>
     </view>
 </template>
 
@@ -16,25 +22,31 @@
 Import
 */
 // NodeJS
-
+import { mapState, mapActions } from 'vuex';
 // Inner
+import {  } from '../store/modules/types';
 import MessagesList from '../components/chat/MessagesList';
 //
 
 export default {
-    components: { MessagesList },
     data: function() {
         return {
-            text: '',
-            messages: [
-                { author: 'user', content: 'Ceci est un message' },
-                { author: 'bot', content: 'Ceci est un deuxième message' },
-                { author: 'user', content: 'Ceci est un troisème message' },
-                { author: 'user', content: 'Ceci est un quatrième message' },
-                { author: 'bot', content: 'Ceci est un cinquième message' },
-            ]
+            messageContent: '',
         };
-    }
+    },
+    computed: mapState({
+        messages: state => state.chat.messages
+    }),
+    methods: {
+        submitMessage: function() {
+            this.sendMessage(this.messageContent);
+            this.messageContent = '';
+        },
+        ...mapActions('chat', [
+            'sendMessage'
+        ])
+    },
+    components: { MessagesList }
 }
 
 </script>
