@@ -1,5 +1,5 @@
 <template>
-    <view class="container">
+    <keyboard-avoiding-view behavior="padding" class="container" keyboardVerticalOffset=70 enabled>
         <messages-list
             :messages="messages"
         />
@@ -13,7 +13,7 @@
                 title="Envoyer"
             />
         </view>
-    </view>
+    </keyboard-avoiding-view>
 </template>
 
 <script>
@@ -23,6 +23,7 @@ Import
 */
 // NodeJS
 import { mapState, mapActions } from 'vuex';
+import { KeyboardAvoidingView } from 'react-native';
 // Inner
 import {  } from '../store/modules/types';
 import MessagesList from '../components/chat/MessagesList';
@@ -46,7 +47,7 @@ export default {
             'sendMessage'
         ])
     },
-    components: { MessagesList }
+    components: { KeyboardAvoidingView, MessagesList }
 }
 
 </script>
