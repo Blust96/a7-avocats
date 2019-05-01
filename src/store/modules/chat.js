@@ -14,7 +14,8 @@ const state = {
         { author: 'bot', content: 'Ceci est un deuxième message' },
         { author: 'user', content: 'Ceci est un troisème message' },
         { author: 'user', content: 'Ceci est un quatrième message' },
-        { author: 'bot', content: 'Ceci est un cinquième message' },
+        { author: 'bot', content: 'Ceci est un cinquième message qui est beauoup plus long que les autres pour voir comment se comporte le texte afin de pouvoir gérer leur affichage' },
+        { author: 'user', content: 'Mais oui c\'est clair ! Lorsqu\'on parle de tout ces points de vues, c\'est l\'activisme vers ce qu\'on appelle la dynamique des sports, c\'est à dire mettre un accent sur les revenus aussi à voir hein, c\'est un problème de TGO, théorie générale des organisations...'}
     ]
 }
 //
