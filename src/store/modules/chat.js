@@ -3,6 +3,8 @@ Import
 */
 // Actions
 import { } from './types';
+// Services
+const { sendBotRequest } = require('../../services/chatbot');
 //
 
 /*
