@@ -1,24 +1,24 @@
 /*
 Import
 */
+// NodeJS
+import { AsyncStorage } from 'react-native';
 // Actions
 import { } from './types';
 // Services
-const { sendBotRequest } = require('../../services/chatbot');
+const { generateConversationId, sendBotRequest } = require('../../services/chatbot');
 //
 
 /*
 State
 */
 const state = {
-    messages: [
-        { author: 'user', content: 'Ceci est un message' },
-        { author: 'bot', content: 'Ceci est un deuxième message' },
-        { author: 'user', content: 'Ceci est un troisème message' },
-        { author: 'user', content: 'Ceci est un quatrième message' },
-        { author: 'bot', content: 'Ceci est un cinquième message qui est beauoup plus long que les autres pour voir comment se comporte le texte afin de pouvoir gérer leur affichage' },
-        { author: 'user', content: 'Mais oui c\'est clair ! Lorsqu\'on parle de tout ces points de vues, c\'est l\'activisme vers ce qu\'on appelle la dynamique des sports, c\'est à dire mettre un accent sur les revenus aussi à voir hein, c\'est un problème de TGO, théorie générale des organisations...'}
-    ]
+    isChatReady: false,
+    loadingUserMessage: false,
+    loadingBotMessage: false,
+    conversationId: null,
+    errorMessage: '',
+    messages: []
 }
 //
 
@@ -34,8 +34,48 @@ const getters = {
 Actions
 */
 const actions = {
-    sendMessage ({ commit }, content) {
-        commit('setMessage', { author: 'user', content: content });
+    // Loading conversation id from async storage => Creating if doesn't exist
+    async loadConversationId ({ commit, dispatch }) {
+        try {
+            // Set isChatReady to false for loading render
+            commit('setConversationId');
+            // Waiting for AsyncStorage result
+            const conversationId = await AsyncStorage.getItem('conversationId');
+            // If conversationId exists
+            if (conversationId !== null) {
+                // State update by commit setConversationIdSuccess mutation
+                commit('setConversationIdSuccess', { conversationId });
+            } else { // If conversationId doesn't exist
+                // Dispatch creationConversationId action to create id
+                dispatch('createConversationId');
+            }
+        } catch (error) { // If error occurs
+            console.log("Error occured on getting conversationId", error);
+            commit('setConversationIdError', { errorMessage: "Message d'erreur" });
+        }
+    },
+    // Conversation id creation and storing in async storage
+    async createConversationId ({ commit }) {
+        try {
+            const conversationId = generateConversationId(10);
+            await AsyncStorage.setItem('conversationId', conversationId);
+            commit('setConversationIdSuccess', { conversationId });
+        } catch (error) {
+            console.log("Error occured on creating conversationId", error);
+            commit('setConversationIdError', { errorMessage: "Message d'erreur" });
+        }
+    },
+    // Sending message to bot
+    async sendMessage ({ state, commit }, message) {
+        try {
+            commit('setMessage');
+            const botMessage = await sendBotRequest(message, state.conversationId, 'fr');
+            commit('setUserMessageSuccess', { message });
+            commit('setBotMessageSuccess', { botMessage });
+        } catch (error) {
+            console.log("Error occured on sending message", error);
+            commit('setMessageError', { errorMessage: "Message d'erreur" });
+        }
     }
 }
 //
@@ -44,11 +84,44 @@ const actions = {
 Mutations
 */
 const mutations = {
-    setMessage (state, { author, content }) {
+    // Conversation ID mutations
+    setConversationId (state) {
+        state.isChatReady = false;
+    },
+    setConversationIdSuccess (state, { conversationId }) {
+        state.conversationId = conversationId;
+        state.isChatReady = true;
+        state.errorMessage = '';
+    },
+    setConversationIdError (state, { errorMessage }) {
+        state.isChatReady = true;
+        state.errorMessage = errorMessage;
+    },
+    // Message mutations
+    setMessage (state) {
+        state.loadingUserMessage = true;
+        state.loadingBotMessage = true;
+    },
+    setUserMessageSuccess (state, { message }) {
         state.messages.push({
-            author,
-            content
+            author: 'user',
+            message
         });
+        state.loadingUserMessage = false;
+        state.errorMessage = '';
+    },
+    setBotMessageSuccess (state, { botMessage }) {
+        state.messages.push({
+            author: 'bot',
+            message: botMessage
+        });
+        state.loadingBotMessage = false;
+        state.errorMessage = '';
+    },
+    setMessageError (state, { errorMessage }) {
+        state.loadingUserMessage = false;
+        state.loadingBotMessage = false;
+        state.errorMessage = errorMessage;
     }
 }
 //
