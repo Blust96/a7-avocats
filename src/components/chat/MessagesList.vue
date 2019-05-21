@@ -2,7 +2,7 @@
     <scroll-view class="container">
         <message
             v-for="message in messages"
-            :key="message.content"
+            :key="message.message"
             :message="message"
         />
     </scroll-view>
