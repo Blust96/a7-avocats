@@ -1,9 +1,11 @@
 <template>
     <keyboard-avoiding-view behavior="padding" class="container" keyboardVerticalOffset=70 enabled>
+        <app-loading v-if="!isChatReady"></app-loading>
         <messages-list
+            v-if="isChatReady"
             :messages="messages"
         />
-        <view>
+        <view v-if="isChatReady">
             <text-input
                 :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
                 v-model="messageContent"
@@ -24,6 +26,7 @@ Import
 // NodeJS
 import { mapState, mapActions } from 'vuex';
 import { KeyboardAvoidingView } from 'react-native';
+import { AppLoading } from 'expo';
 // Inner
 import {  } from '../store/modules/types';
 import MessagesList from '../components/chat/MessagesList';
@@ -35,7 +38,11 @@ export default {
             messageContent: '',
         };
     },
+    created: function() {
+        this.loadConversationId();
+    },
     computed: mapState({
+        isChatReady: state => state.chat.isChatReady,
         messages: state => state.chat.messages
     }),
     methods: {
@@ -44,10 +51,11 @@ export default {
             this.messageContent = '';
         },
         ...mapActions('chat', [
+            'loadConversationId',
             'sendMessage'
         ])
     },
-    components: { KeyboardAvoidingView, MessagesList }
+    components: { KeyboardAvoidingView, AppLoading, MessagesList }
 }
 
 </script>
