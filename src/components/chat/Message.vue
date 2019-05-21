@@ -1,11 +1,11 @@
 <template>
     <BotMessage 
         v-if="message.author == 'bot'"
-        :message="message"
+        :content="message.content"
     />
     <UserMessage
         v-else
-        :message="message"
+        :content="message.content"
     />
 </template>
 

@@ -1,14 +1,14 @@
 <template>
     <view class="user-message-container">
-        <text class="user-message">{{message.message}}</text>
+        <text class="user-message">{{content}}</text>
     </view>
 </template>
 
 <script>
 export default {
     props: {
-        message: {
-            Type: Object
+        content: {
+            Type: String
         }
     }
 }

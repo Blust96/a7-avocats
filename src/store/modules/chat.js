@@ -105,7 +105,7 @@ const mutations = {
     setUserMessageSuccess (state, { message }) {
         state.messages.push({
             author: 'user',
-            message
+            content: message
         });
         state.loadingUserMessage = false;
         state.errorMessage = '';
@@ -113,7 +113,7 @@ const mutations = {
     setBotMessageSuccess (state, { botMessage }) {
         state.messages.push({
             author: 'bot',
-            message: botMessage
+            content: botMessage.content.title
         });
         state.loadingBotMessage = false;
         state.errorMessage = '';
