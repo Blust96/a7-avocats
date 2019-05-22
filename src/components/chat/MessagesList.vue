@@ -1,9 +1,9 @@
 <template>
     <scroll-view class="container">
         <message
-            v-for="message in messages"
-            :key="message.content"
-            :message="message"
+            v-for="(messageItem, index) in messages"
+            :key="index"
+            :messageItem="messageItem"
         />
     </scroll-view>
 </template>

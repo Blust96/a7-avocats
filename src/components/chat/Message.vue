@@ -1,11 +1,11 @@
 <template>
-    <BotMessage 
-        v-if="message.author == 'bot'"
-        :content="message.content"
+    <bot-message 
+        v-if="messageItem.author == 'bot'"
+        :message="messageItem.message"
     />
-    <UserMessage
+    <user-message
         v-else
-        :content="message.content"
+        :content="messageItem.message.content"
     />
 </template>
 
@@ -14,8 +14,6 @@
 /*
 Import
 */
-// NodeJS
-
 // Inner
 import UserMessage from './UserMessage';
 import BotMessage from './BotMessage';
@@ -24,7 +22,7 @@ import BotMessage from './BotMessage';
 export default {
     components: { UserMessage, BotMessage },
     props: {
-        message: {
+        messageItem: {
             Type: Object
         }
     }
