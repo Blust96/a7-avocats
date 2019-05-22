@@ -6,6 +6,11 @@
             :messages="messages"
         />
         <view v-if="isChatReady">
+            <quick-reply
+                v-for="(quickReply, index) in quickReplies"
+                :key="index"
+                :reply="quickReply"
+            />
             <text-input
                 :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
                 v-model="messageContent"
@@ -30,6 +35,7 @@ import { AppLoading } from 'expo';
 // Inner
 import {  } from '../store/modules/types';
 import MessagesList from '../components/chat/MessagesList';
+import QuickReply from '../components/chat/QuickReply';
 //
 
 export default {
@@ -43,7 +49,8 @@ export default {
     },
     computed: mapState({
         isChatReady: state => state.chat.isChatReady,
-        messages: state => state.chat.messages
+        messages: state => state.chat.messages,
+        quickReplies: state => state.chat.quickReplies,
     }),
     methods: {
         submitMessage: function() {
@@ -55,7 +62,7 @@ export default {
             'sendMessage'
         ])
     },
-    components: { KeyboardAvoidingView, AppLoading, MessagesList }
+    components: { KeyboardAvoidingView, AppLoading, MessagesList, QuickReply }
 }
 
 </script>
