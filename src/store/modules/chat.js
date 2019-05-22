@@ -18,7 +18,8 @@ const state = {
     loadingBotMessage: false,
     conversationId: null,
     errorMessage: '',
-    messages: []
+    messages: [],
+    quickReplies: [],
 }
 //
 
@@ -66,16 +67,22 @@ const actions = {
         }
     },
     // Sending message to bot
-    async sendMessage ({ state, commit }, message) {
+    async sendMessage ({ state, commit, dispatch }, message) {
         try {
             commit('setMessage');
             const botMessage = await sendBotRequest(message, state.conversationId, 'fr');
             commit('setUserMessageSuccess', { message });
-            commit('setBotMessageSuccess', { botMessage });
+            dispatch('processBotMessage', botMessage);
         } catch (error) {
             console.log("Error occured on sending message", error);
             commit('setMessageError', { errorMessage: "Message d'erreur" });
         }
+    },
+    // Process bot message by message type
+    processBotMessage({ commit }, botMessage) {
+        if(botMessage.type === 'quickReplies')
+            commit('setQuickReplies', { quickReplies: botMessage.content.buttons })    
+        commit('setBotMessageSuccess', { botMessage });
     }
 }
 //
@@ -105,15 +112,16 @@ const mutations = {
     setUserMessageSuccess (state, { message }) {
         state.messages.push({
             author: 'user',
-            content: message
+            message: { content: message }
         });
         state.loadingUserMessage = false;
+        state.quickReplies = [];
         state.errorMessage = '';
     },
     setBotMessageSuccess (state, { botMessage }) {
         state.messages.push({
             author: 'bot',
-            content: botMessage.content.title
+            message: botMessage
         });
         state.loadingBotMessage = false;
         state.errorMessage = '';
@@ -122,6 +130,10 @@ const mutations = {
         state.loadingUserMessage = false;
         state.loadingBotMessage = false;
         state.errorMessage = errorMessage;
+    },
+    // QuickReplies mutations
+    setQuickReplies (state, { quickReplies }) {
+        state.quickReplies = quickReplies;
     }
 }
 //
