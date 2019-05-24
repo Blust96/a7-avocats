@@ -1,8 +1,10 @@
 <template>
-    <button 
+    <touchable-opacity 
+        class="reply-button"
         :on-press="() => submitReply(reply.value)" 
-        :title="reply.title"
-    />
+    >
+        <text>{{ reply.title }}</text>
+    </touchable-opacity>
 </template>
 
 <script>
@@ -27,5 +29,14 @@ export default {
 </script>
 
 <style>
-
+.reply-button {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    borderColor: #7aca7c;
+    borderWidth: 2;
+    borderRadius: 20;
+    backgroundColor: #fff;
+    color: #7aca7c;
+}
 </style>
