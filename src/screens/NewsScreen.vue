@@ -10,23 +10,29 @@
             <text class="button-text">Suivi de dossier</text>
         </touchable-opacity>
         <touchable-opacity
-            :on-press="navigateAideXDLOL"
-            class="button2">
-            <text class="button-text2">Aide XD LOL</text>
+            :on-press="navigateQuestionsReponses"
+            class="button">
+            <text class="button-text">Aide XD LOL</text>
         </touchable-opacity>
     </view>
 </template>
 
 <script>
+
 export default {
+    props: {
+        navigation: {
+            type: Object
+        }
+    },
     methods: {
         navigateSuiviDeDossier: function() {
-            alert('Suivi de dossier')
+            this.navigation.navigate('Chat')
         },
-        navigateAideXDLOL: function() {
-            alert('Aide XD LOL')
+        navigateQuestionsReponses: function() {
+            alert('Q&A')
         }
-    }
+    },
 }
 </script>
 
@@ -40,19 +46,6 @@ export default {
 }
 
 .button {
-    padding: 10px;
-    margin-bottom: 20px;
-    borderColor: #ffffff;
-    borderRadius: 20px;
-    borderWidth: 1px;
-}
-
-.button-text {
-    color: #ffffff;
-    font-size: 16px;
-}
-
-.button2 {
     paddingHorizontal: 20px;
     paddingVertical: 10px;
     margin-bottom: 20px;
@@ -62,7 +55,7 @@ export default {
     borderWidth: 1px;
 }
 
-.button-text2 {
+.button-text {
     color: #7aca7c;
     font-size: 16px;
 }

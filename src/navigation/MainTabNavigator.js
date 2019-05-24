@@ -39,7 +39,13 @@ const NewsNavigation = StackNavigator(
             navigationOptions: {
                 title: 'Actualités'
             }
-        }
+        },
+        Chat: { 
+            screen: ChatScreen,
+            navigationOptions: {
+                title: 'Chat'
+            }
+        },
     },
     {
         initialRouteName: 'News'
