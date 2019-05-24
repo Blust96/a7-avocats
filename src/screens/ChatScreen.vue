@@ -6,11 +6,13 @@
             :messages="messages"
         />
         <view v-if="isChatReady">
-            <quick-reply
-                v-for="(quickReply, index) in quickReplies"
-                :key="index"
-                :reply="quickReply"
-            />
+            <scroll-view horizontal="true">
+                <quick-reply
+                    v-for="(quickReply, index) in quickReplies"
+                    :key="index"
+                    :reply="quickReply"
+                />
+            </scroll-view>
             <text-input
                 :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
                 v-model="messageContent"
@@ -30,10 +32,9 @@ Import
 */
 // NodeJS
 import { mapState, mapActions } from 'vuex';
-import { KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView, ScrollView } from 'react-native';
 import { AppLoading } from 'expo';
 // Inner
-import {  } from '../store/modules/types';
 import MessagesList from '../components/chat/MessagesList';
 import QuickReply from '../components/chat/QuickReply';
 //
@@ -62,7 +63,7 @@ export default {
             'sendMessage'
         ])
     },
-    components: { KeyboardAvoidingView, AppLoading, MessagesList, QuickReply }
+    components: { KeyboardAvoidingView, ScrollView, AppLoading, MessagesList, QuickReply }
 }
 
 </script>
