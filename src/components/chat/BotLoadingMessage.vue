@@ -1,6 +1,6 @@
 <template>
     <view class="bot-message-container">
-        <view class="container">
+        <view class="loading-container">
             <animated:view
                 class="animated-view-style"
                 :style="{
@@ -74,20 +74,20 @@ export default {
             ])
             .start(event => {
                 if (event.finished) {
-                this.animate();
+                    this.animate();
                 }
             });
             this.movingMargin1 = this.animatedValue1.interpolate({
                 inputRange: [0, 0.5, 1, 1.5, 2],
-                outputRange: [0, 5, 0, 5, 0]
+                outputRange: [0, 11, 0, 11, 0]
             })
             this.movingMargin2 = this.animatedValue2.interpolate({
                 inputRange: [0, 0.5, 1, 1.5, 2],
-                outputRange: [0, 5, 0, 5, 0]
+                outputRange: [0, 11, 0, 11, 0]
             })
             this.movingMargin3 = this.animatedValue3.interpolate({
                 inputRange: [0, 0.5, 1, 1.5, 2],
-                outputRange: [0, 5, 0, 5, 0]
+                outputRange: [0, 11, 0, 11, 0]
             })
         }
     }
@@ -97,7 +97,7 @@ export default {
 <style>
     .bot-message-container {
         width: 80%;
-        padding: 8px;
+        padding: 9px;
         /* background-color: rgba(23,166,56,0.7); */
         background-color: rgb(23,166,56);
         opacity: 0.7;
@@ -110,18 +110,18 @@ export default {
         justify-content:center;
     }
 
-    .container{
+    .loading-container{
         flex-direction:row;
         justify-content:flex-start;
         align-items:flex-end;
-        height: 24;
+        height: 22;
     }
 
     .animated-view-style{
-        width: 20;
-        height: 20;
+        width: 12;
+        height: 12;
         margin-right: 5px;
-        border-radius: 20;
+        border-radius: 12;
         background-color: #FFFFFF;
     }
 
