@@ -12,7 +12,7 @@ Import
 // NodeJS
 import { Root } from 'native-base';
 // Inner
-import Navigation from './navigation/MainTabNavigator';
+import Navigation from './navigation/MainStackNavigator';
 import store from './store';
 //
 
