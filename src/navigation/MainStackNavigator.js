@@ -29,7 +29,13 @@ const MainStackNavigator = StackNavigator(
             navigationOptions: {
                 title: 'Chat',
                 headerStyle: {
+                    position: 'absolute',
+                    zIndex: 100,
+                    top: 0,
+                    left: 0,
+                    right: 0,
                     backgroundColor: '#ffffff',
+                    borderBottomWidth: 0,
                     borderBottomRightRadius: '20px',
                     borderBottomLeftRadius: '20px',
                     shadowColor: '#000000',

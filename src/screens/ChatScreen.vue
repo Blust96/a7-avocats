@@ -8,7 +8,7 @@
             :loadingBotMessage="loadingBotMessage"
         />
         <view v-if="isChatReady" class="keyboard">
-            <scroll-view horizontal="true" class="quick-replies-container">
+            <scroll-view horizontal="true" class="quick-replies-container" keyboardShouldPersistTaps="always">
                 <quick-reply
                     v-for="(quickReply, index) in quickReplies"
                     :key="index"
