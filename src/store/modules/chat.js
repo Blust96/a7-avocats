@@ -72,7 +72,7 @@ const actions = {
             commit('setMessage', { message });
             const botMessage = await sendBotRequest(message, state.conversationId, 'fr');
             commit('setUserMessageSuccess');
-            dispatch('processBotMessage', botMessage);
+            setTimeout(() => dispatch('processBotMessage', botMessage), 2000);
         } catch (error) {
             console.log("Error occured on sending message", error);
             commit('setMessageError', { errorMessage: "Message d'erreur" });

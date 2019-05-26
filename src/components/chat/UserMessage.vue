@@ -1,5 +1,6 @@
 <template>
     <view class="user-message-container">
+        <text v-if="loadingUserMessage && lastMessage">LOADING</text>
         <text class="user-message">{{content}}</text>
     </view>
 </template>
@@ -9,7 +10,13 @@ export default {
     props: {
         content: {
             Type: String
-        }
+        },
+        lastMessage: {
+            Type: Boolean
+        },
+        loadingUserMessage: {
+            Type: Boolean
+        },
     }
 }
 </script>

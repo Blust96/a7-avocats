@@ -6,7 +6,7 @@
             :messageItem="messageItem"
             :loadingUserMessage="loadingUserMessage"
             :loadingBotMessage="loadingBotMessage"
-            :lastMessage="index === messages.length"
+            :lastMessage="index + 1 === messages.length"
         />
     </scroll-view>
 </template>

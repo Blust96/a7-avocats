@@ -2,10 +2,14 @@
     <bot-message 
         v-if="messageItem.author == 'bot'"
         :message="messageItem.message"
+        :lastMessage="lastMessage"
+        :loadingBotMessage="loadingBotMessage"
     />
     <user-message
         v-else
         :content="messageItem.message.content"
+        :lastMessage="lastMessage"
+        :loadingUserMessage="loadingUserMessage"
     />
 </template>
 
