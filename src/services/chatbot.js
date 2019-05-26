@@ -43,7 +43,7 @@ const sendBotRequest = async (message_content, conversation_id, language) => {
     let json = await response.json();
 
     if(json.results !== null)
-        return json.results.messages[0];
+        return json.results.messages;
 
     return null;
 

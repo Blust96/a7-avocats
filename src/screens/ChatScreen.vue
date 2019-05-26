@@ -13,6 +13,7 @@
                     v-for="(quickReply, index) in quickReplies"
                     :key="index"
                     :reply="quickReply"
+                    :loadingUserMessage="loadingUserMessage"
                 />
             </scroll-view>
             <view class="input-container">

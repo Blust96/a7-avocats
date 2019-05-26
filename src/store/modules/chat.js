@@ -70,9 +70,15 @@ const actions = {
     async sendMessage ({ state, commit, dispatch }, message) {
         try {
             commit('setMessage', { message });
-            const botMessage = await sendBotRequest(message, state.conversationId, 'fr');
-            commit('setUserMessageSuccess', { botMessage });
-            setTimeout(() => dispatch('processBotMessage', botMessage), 2000);
+            const botMessages = await sendBotRequest(message, state.conversationId, 'fr');
+            commit('setUserMessageSuccess');
+            botMessages.map((botMessage, index) => {
+                if(index > 0)
+                    setTimeout(() => commit('setBotMessage', { botMessage }), 2000);
+                else
+                    commit('setBotMessage', { botMessage });
+                setTimeout(() => dispatch('processBotMessage', botMessage), 2000);
+            });
         } catch (error) {
             console.log("Error occured on sending message", error);
             commit('setMessageError', { errorMessage: "Message d'erreur" });
@@ -112,15 +118,17 @@ const mutations = {
         });
         state.loadingUserMessage = true;
     },
-    setUserMessageSuccess (state, { botMessage }) {
+    setUserMessageSuccess (state) {
+        state.loadingUserMessage = false;
+        state.quickReplies = [];
+        state.errorMessage = '';
+    },
+    setBotMessage (state, { botMessage }) {
         state.messages.push({
             author: 'bot',
             message: botMessage
         });
-        state.loadingUserMessage = false;
         state.loadingBotMessage = true;
-        state.quickReplies = [];
-        state.errorMessage = '';
     },
     setBotMessageSuccess (state) {
         state.loadingBotMessage = false;
