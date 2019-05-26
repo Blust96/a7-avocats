@@ -4,6 +4,8 @@
         <messages-list
             v-if="isChatReady"
             :messages="messages"
+            :loadingUserMessage="loadingUserMessage"
+            :loadingBotMessage="loadingBotMessage"
         />
         <view v-if="isChatReady">
             <scroll-view horizontal="true">
@@ -52,6 +54,8 @@ export default {
         isChatReady: state => state.chat.isChatReady,
         messages: state => state.chat.messages,
         quickReplies: state => state.chat.quickReplies,
+        loadingUserMessage: state => state.chat.loadingUserMessage,
+        loadingBotMessage: state => state.chat.loadingBotMessage,
     }),
     methods: {
         submitMessage: function() {

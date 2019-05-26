@@ -4,6 +4,9 @@
             v-for="(messageItem, index) in messages"
             :key="index"
             :messageItem="messageItem"
+            :loadingUserMessage="loadingUserMessage"
+            :loadingBotMessage="loadingBotMessage"
+            :lastMessage="index === messages.length"
         />
     </scroll-view>
 </template>
@@ -24,7 +27,13 @@ export default {
     props: {
         messages: {
             Type: Array
-        }
+        },
+        loadingUserMessage: {
+            Type: Boolean
+        },
+        loadingBotMessage: {
+            Type: Boolean
+        },
     }
 }
 

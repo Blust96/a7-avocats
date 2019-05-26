@@ -69,9 +69,9 @@ const actions = {
     // Sending message to bot
     async sendMessage ({ state, commit, dispatch }, message) {
         try {
-            commit('setMessage');
+            commit('setMessage', { message });
             const botMessage = await sendBotRequest(message, state.conversationId, 'fr');
-            commit('setUserMessageSuccess', { message });
+            commit('setUserMessageSuccess');
             dispatch('processBotMessage', botMessage);
         } catch (error) {
             console.log("Error occured on sending message", error);
@@ -105,16 +105,16 @@ const mutations = {
         state.errorMessage = errorMessage;
     },
     // Message mutations
-    setMessage (state) {
-        state.loadingUserMessage = true;
-        state.loadingBotMessage = true;
-    },
-    setUserMessageSuccess (state, { message }) {
+    setMessage (state, { message }) {
         state.messages.push({
             author: 'user',
             message: { content: message }
         });
+        state.loadingUserMessage = true;
+    },
+    setUserMessageSuccess (state) {
         state.loadingUserMessage = false;
+        state.loadingBotMessage = true;
         state.quickReplies = [];
         state.errorMessage = '';
     },

@@ -24,7 +24,16 @@ export default {
     props: {
         messageItem: {
             Type: Object
-        }
+        },
+        lastMessage: {
+            Type: Boolean
+        },
+        loadingUserMessage: {
+            Type: Boolean
+        },
+        loadingBotMessage: {
+            Type: Boolean
+        },
     }
 }
 </script>
