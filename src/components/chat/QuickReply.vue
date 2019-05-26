@@ -1,7 +1,8 @@
 <template>
     <touchable-opacity 
         class="reply-button"
-        :on-press="() => submitReply(reply.value)" 
+        :on-press="() => submitReply(reply.value)"
+        :disabled="loadingUserMessage"
     >
         <text class="reply-button-text">{{ reply.title }}</text>
     </touchable-opacity>
@@ -23,6 +24,9 @@ export default {
     props: {
         reply: {
             type: Object
+        },
+        loadingUserMessage: {
+            type: Boolean
         }
     }
 }
