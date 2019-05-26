@@ -5,21 +5,21 @@
                 class="animated-view-style"
                 :style="{
                     marginBottom: movingMargin1,
-                    opacity: 0.5
+                    opacity: 0.1
                 }"
             />
             <animated:view
                 class="animated-view-style"
                 :style="{
                     marginBottom: movingMargin2,
-                    opacity: 0.6
+                    opacity: 0.2
                 }"
             />
             <animated:view
                 class="animated-view-style"
                 :style="{
                     marginBottom: movingMargin3,
-                    opacity: 0.7
+                    opacity: 0.3
                 }"
             />
         </view>
@@ -96,18 +96,21 @@ export default {
 
 <style>
     .bot-message-container {
-        width: 80%;
+        flex-direction:row;
+        width: 85%;
         padding: 9px;
-        /* background-color: rgba(23,166,56,0.7); */
-        background-color: rgb(23,166,56);
+        background-color: #FFFFFF;
         opacity: 0.7;
         border-top-left-radius: 5px;
         border-top-right-radius: 20px;
-        border-bottom-right-radius: 5px;
+        border-bottom-right-radius: 20px;
         border-bottom-left-radius: 20px;
         margin-bottom: 10px;
         flex-direction:column;
         justify-content:center;
+        shadowColor: #000000;
+        shadowOpacity: 0.1;
+        shadowRadius: 18;
     }
 
     .loading-container{
@@ -122,11 +125,6 @@ export default {
         height: 12;
         margin-right: 5px;
         border-radius: 12;
-        background-color: #FFFFFF;
-    }
-
-    .bot-message {
-        color: #FFFFFF;
-        font-size: 16px
+        background-color: #000000;
     }
 </style>

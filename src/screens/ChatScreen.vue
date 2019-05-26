@@ -19,7 +19,8 @@
             <view class="input-container">
                 <text-input
                     class="input-message"
-                    :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
+                    :style="{height: 40}"
+                    placeholder="Quelle est votre question ?"
                     v-model="messageContent"
                 />
                 <button
@@ -86,7 +87,13 @@ export default {
 .keyboard {
     padding-left: 10px;
     padding-right: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 5px;    
+    background-color: #ffffff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    shadowColor: #000000;
+    shadowOpacity: 0.1;
+    shadowRadius: 18;
 }
 
 .quick-replies-container {
@@ -100,7 +107,11 @@ export default {
 .input-message {
     width: 80%;
     padding-left: 10px;
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-bottom-color: #7aca7c;
 }
 
 .input-button {

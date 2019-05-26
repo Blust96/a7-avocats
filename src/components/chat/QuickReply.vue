@@ -37,13 +37,11 @@ export default {
     margin-left: 10px;
     margin-bottom: 10px;
     padding: 10px;
-    borderColor: #7aca7c;
-    borderWidth: 1;
     borderRadius: 20;
-    backgroundColor: #fff;
+    backgroundColor: #7aca7c;
 }
 
 .reply-button-text {
-    color: #7aca7c;
+    color: #ffffff;
 }
 </style>

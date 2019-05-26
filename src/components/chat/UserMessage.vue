@@ -92,15 +92,18 @@ export default {
     .user-message-container {
         width: 80%;
         padding: 10px;
-        background-color: #6A6665;
+        background-color: #7aca7c;
         border-top-left-radius: 20px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 20px;
-        border-bottom-left-radius: 5px;
+        border-bottom-left-radius: 20px;
         margin-bottom: 10px;
         flex-direction: row;
         align-self: flex-end;
         align-items: center;
+        shadowColor: #000000;
+        shadowOpacity: 0.1;
+        shadowRadius: 18;
     }
 
     .loading-container{

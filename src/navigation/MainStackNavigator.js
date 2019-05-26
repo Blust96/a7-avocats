@@ -16,13 +16,30 @@ const MainStackNavigator = StackNavigator(
         Home: {
             screen: HomeScreen,
             navigationOptions: {
-                title: 'Accueil'
+                title: 'Accueil',
+                headerStyle: {
+                    backgroundColor: '#7aca7c',
+                    borderBottomWidth: 0,
+                },
+                headerTintColor: 'transparent'
             }
         },
         Chat: { 
             screen: ChatScreen,
             navigationOptions: {
-                title: 'Chat'
+                title: 'Chat',
+                headerStyle: {
+                    backgroundColor: '#ffffff',
+                    borderBottomRightRadius: '20px',
+                    borderBottomLeftRadius: '20px',
+                    shadowColor: '#000000',
+                    shadowOpacity: 0.1,
+                    shadowRadius: 18,
+                },
+                headerTintColor: '#7aca7c',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                },
             }
         },
         Appointment: { 
@@ -34,7 +51,19 @@ const MainStackNavigator = StackNavigator(
         FolderTracking: {
             screen: FolderTrackingScreen,
             navigationOptions: {
-                title: 'Suivi de dossier'
+                title: 'Suivi de dossier',
+                headerStyle: {
+                    backgroundColor: '#ffffff',
+                    borderBottomRightRadius: '20px',
+                    borderBottomLeftRadius: '20px',
+                    shadowColor: '#000000',
+                    shadowOpacity: 0.1,
+                    shadowRadius: 18,
+                },
+                headerTintColor: '#7aca7c',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                },
             }
         }
     },

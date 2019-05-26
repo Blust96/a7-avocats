@@ -3,7 +3,10 @@
         class="listMessage-button"
         :on-press="() => submitAppointment(listMessage.buttons[0].value)"
     >
-        <text class="listMessage-button-text">{{ listMessage.title }}</text>
+        <view class="listMessage-icon-container">
+
+        </view>
+        <text class="listMessage-button-title">{{ listMessage.title }}</text>
         <text class="listMessage-button-text">{{ listMessage.subtitle }}</text>
     </touchable-opacity>
 </template>
@@ -33,14 +36,41 @@ export default {
 .listMessage-button {
     margin-left: 10px;
     margin-bottom: 10px;
-    padding: 10px;
-    borderColor: #7aca7c;
-    borderWidth: 1;
-    borderRadius: 20;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
     backgroundColor: #fff;
+    shadowColor: #000000;
+    shadowOpacity: 0.1;
+    shadowRadius: 18;
+}
+
+.listMessage-icon-container {
+    backgroundColor: #7aca7c;
+    padding: 15px;
+    height: 70px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 20px;
+}
+
+.listMessage-button-title {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-bottom: 8px;
+    color: #7aca7c;
+    font-weight: 700;
+    text-align: center;
 }
 
 .listMessage-button-text {
-    color: #7aca7c;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #6A696E;
+    text-align: center;
 }
 </style>

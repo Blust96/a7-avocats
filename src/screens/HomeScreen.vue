@@ -46,6 +46,7 @@ export default {
 }
 
 .button {
+    width: 200px;
     paddingHorizontal: 20px;
     paddingVertical: 10px;
     margin-bottom: 20px;
@@ -53,11 +54,13 @@ export default {
     backgroundColor: #ffffff;
     borderRadius: 20px;
     borderWidth: 1px;
+    text-align: center;
 }
 
 .button-text {
     color: #7aca7c;
     font-size: 16px;
+    text-align: center;
 }
 
 </style>
