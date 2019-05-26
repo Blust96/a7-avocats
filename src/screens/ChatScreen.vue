@@ -7,22 +7,26 @@
             :loadingUserMessage="loadingUserMessage"
             :loadingBotMessage="loadingBotMessage"
         />
-        <view v-if="isChatReady">
-            <scroll-view horizontal="true">
+        <view v-if="isChatReady" class="keyboard">
+            <scroll-view horizontal="true" class="quick-replies-container">
                 <quick-reply
                     v-for="(quickReply, index) in quickReplies"
                     :key="index"
                     :reply="quickReply"
                 />
             </scroll-view>
-            <text-input
-                :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
-                v-model="messageContent"
-            />
-            <button
-                :on-press="() => submitMessage()"
-                title="Envoyer"
-            />
+            <view class="input-container">
+                <text-input
+                    class="input-message"
+                    :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
+                    v-model="messageContent"
+                />
+                <button
+                    class="input-button"
+                    :on-press="() => submitMessage()"
+                    title="Envoyer"
+                />
+            </view>
         </view>
     </keyboard-avoiding-view>
 </template>
@@ -74,6 +78,31 @@ export default {
 
 <style>
 .container {
-    flex: 1;  
+    flex: 1; 
+    background-color: #ffffff;
+}
+
+.keyboard {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+.quick-replies-container {
+    padding-top: 10px;
+}
+
+.input-container {
+    flex-direction: row;
+}
+
+.input-message {
+    width: 80%;
+    padding-left: 10px;
+    border-radius: 20px;
+}
+
+.input-button {
+    width: 20%
 }
 </style>

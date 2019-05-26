@@ -12,7 +12,7 @@
         <touchable-opacity
             :on-press="navigateQuestionsReponses"
             class="button">
-            <text class="button-text">Aide XD LOL</text>
+            <text class="button-text">Questions/Réponses</text>
         </touchable-opacity>
     </view>
 </template>
@@ -30,7 +30,7 @@ export default {
             this.navigation.navigate('Chat')
         },
         navigateQuestionsReponses: function() {
-            alert('Q&A')
+            this.navigation.navigate('Chat')
         }
     },
 }
