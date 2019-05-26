@@ -1,5 +1,5 @@
 <template>
-    <keyboard-avoiding-view behavior="padding" class="container" keyboardVerticalOffset=70 enabled>
+    <keyboard-avoiding-view behavior="padding" class="container" enabled>
         <app-loading v-if="!isChatReady"></app-loading>
         <messages-list
             v-if="isChatReady"
@@ -81,6 +81,7 @@ export default {
 <style>
 .container {
     flex: 1; 
+    padding-top: 60px;
     background-color: #ffffff;
 }
 
