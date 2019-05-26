@@ -71,7 +71,7 @@ const actions = {
         try {
             commit('setMessage', { message });
             const botMessage = await sendBotRequest(message, state.conversationId, 'fr');
-            commit('setUserMessageSuccess');
+            commit('setUserMessageSuccess', { botMessage });
             setTimeout(() => dispatch('processBotMessage', botMessage), 2000);
         } catch (error) {
             console.log("Error occured on sending message", error);
@@ -82,7 +82,7 @@ const actions = {
     processBotMessage({ commit }, botMessage) {
         if(botMessage.type === 'quickReplies')
             commit('setQuickReplies', { quickReplies: botMessage.content.buttons })    
-        commit('setBotMessageSuccess', { botMessage });
+        commit('setBotMessageSuccess');
     }
 }
 //
@@ -112,17 +112,17 @@ const mutations = {
         });
         state.loadingUserMessage = true;
     },
-    setUserMessageSuccess (state) {
+    setUserMessageSuccess (state, { botMessage }) {
+        state.messages.push({
+            author: 'bot',
+            message: botMessage
+        });
         state.loadingUserMessage = false;
         state.loadingBotMessage = true;
         state.quickReplies = [];
         state.errorMessage = '';
     },
-    setBotMessageSuccess (state, { botMessage }) {
-        state.messages.push({
-            author: 'bot',
-            message: botMessage
-        });
+    setBotMessageSuccess (state) {
         state.loadingBotMessage = false;
         state.errorMessage = '';
     },

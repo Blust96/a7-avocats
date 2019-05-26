@@ -1,5 +1,6 @@
 <template>
-    <bot-text-message v-if="message.type == 'quickReplies'" :lastMessage="lastMessage" :loadingBotMessage="loadingBotMessage">
+    <bot-loading-message v-if="lastMessage && loadingBotMessage" />
+    <bot-text-message v-else-if="message.type == 'quickReplies'" :lastMessage="lastMessage" :loadingBotMessage="loadingBotMessage">
         {{ message.content.title }}
     </bot-text-message>
     <bot-text-message v-else-if="message.type == 'text'" :lastMessage="lastMessage" :loadingBotMessage="loadingBotMessage">
@@ -13,11 +14,12 @@
 Import
 */
 // Inner
+import BotLoadingMessage from './BotLoadingMessage';
 import BotTextMessage from './BotTextMessage';
 //
 
 export default {
-    components: { BotTextMessage },
+    components: { BotTextMessage, BotLoadingMessage },
     props: {
         message: {
             Type: Object
