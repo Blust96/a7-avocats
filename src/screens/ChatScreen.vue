@@ -9,7 +9,7 @@
             :navigation="navigation"
         />
         <view v-if="isChatReady" class="keyboard">
-            <scroll-view horizontal="true" class="quick-replies-container" keyboardShouldPersistTaps="always">
+            <scroll-view horizontal="true" class="quick-replies-container" keyboardShouldPersistTaps="always" showsHorizontalScrollIndicator="false">
                 <quick-reply
                     v-for="(quickReply, index) in quickReplies"
                     :key="index"
@@ -24,10 +24,12 @@
                     placeholder="Quelle est votre question ?"
                     v-model="messageContent"
                 />
-                <button
-                    class="input-button"
+                <font-awesome
                     :on-press="() => submitMessage()"
-                    title="Envoyer"
+                    name="send"
+                    :style="{marginLeft: 20}"
+                    :size=30
+                    color="#7aca7c"
                 />
             </view>
         </view>
@@ -42,6 +44,7 @@ Import
 // NodeJS
 import { mapState, mapActions } from 'vuex';
 import { KeyboardAvoidingView, ScrollView } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 import { AppLoading } from 'expo';
 // Inner
 import MessagesList from '../components/chat/MessagesList';
@@ -79,7 +82,7 @@ export default {
             'sendMessage'
         ])
     },
-    components: { KeyboardAvoidingView, ScrollView, AppLoading, MessagesList, QuickReply }
+    components: { KeyboardAvoidingView, ScrollView, AppLoading, FontAwesome, MessagesList, QuickReply }
 }
 
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <scroll-view class="container">
+    <scroll-view class="container" keyboardShouldPersistTaps="handled">
         <message
             v-for="(messageItem, index) in messages"
             :key="index"

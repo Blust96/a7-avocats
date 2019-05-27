@@ -1,5 +1,5 @@
 <template>
-    <scroll-view class="container" horizontal="true">
+    <scroll-view class="container" horizontal="true" :showsHorizontalScrollIndicator="false" keyboardShouldPersistTaps="always">
         <bot-list-message
             v-for="(listMessage, index) in listMessages"
             :key="index"
@@ -37,6 +37,7 @@ export default {
 <style>
 .container {
     flex: 1;
+    overflow: visible;
     padding: 10px;
 }
 </style>

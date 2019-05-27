@@ -34,6 +34,7 @@ export default {
 
 <style>
 .listMessage-button {
+    width: 200px;
     margin-left: 10px;
     margin-bottom: 10px;
     border-top-left-radius: 5px;
