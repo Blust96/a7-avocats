@@ -27,7 +27,7 @@ export default {
     },
     methods: {
         navigateSuiviDeDossier: function() {
-            this.navigation.navigate('Chat')
+            this.navigation.navigate('FolderTracking')
         },
         navigateQuestionsReponses: function() {
             this.navigation.navigate('Chat')

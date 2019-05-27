@@ -8,6 +8,7 @@ import { StackNavigator } from 'vue-native-router';
 import ChatScreen from '../screens/ChatScreen';
 import HomeScreen from '../screens/HomeScreen';
 import FolderTrackingScreen from '../screens/FolderTrackingScreen';
+import FolderTrackingDetailsScreen from '../screens/FolderTrackingDetailsScreen';
 import AppointmentScreen from '../screens/AppointmentScreen';
 //
 
@@ -77,7 +78,37 @@ const MainStackNavigator = StackNavigator(
             navigationOptions: {
                 title: 'Suivi de dossier',
                 headerStyle: {
+                    position: 'absolute',
+                    zIndex: 100,
+                    top: 0,
+                    left: 0,
+                    right: 0,
                     backgroundColor: '#ffffff',
+                    borderBottomWidth: 0,
+                    borderBottomRightRadius: '20px',
+                    borderBottomLeftRadius: '20px',
+                    shadowColor: '#000000',
+                    shadowOpacity: 0.1,
+                    shadowRadius: 18,
+                },
+                headerTintColor: '#7aca7c',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                },
+            }
+        },
+        FolderTrackingDetails: {
+            screen: FolderTrackingDetailsScreen,
+            navigationOptions: {
+                title: 'Détails du dossier',
+                headerStyle: {
+                    position: 'absolute',
+                    zIndex: 100,
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: '#ffffff',
+                    borderBottomWidth: 0,
                     borderBottomRightRadius: '20px',
                     borderBottomLeftRadius: '20px',
                     shadowColor: '#000000',
