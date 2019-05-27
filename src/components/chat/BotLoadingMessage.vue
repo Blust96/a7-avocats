@@ -38,7 +38,7 @@ export default {
             animatedValue1: 0,
             animatedValue2: 0,
             animatedValue3: 0,
-            duration: 1000,
+            duration: 500,
         };
     },
     created: function() {

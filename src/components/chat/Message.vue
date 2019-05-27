@@ -4,6 +4,7 @@
         :message="messageItem.message"
         :lastMessage="lastMessage"
         :loadingBotMessage="loadingBotMessage"
+        :navigation="navigation"
     />
     <user-message
         v-else
@@ -26,6 +27,9 @@ import BotMessage from './BotMessage';
 export default {
     components: { UserMessage, BotMessage },
     props: {
+        navigation: {
+            type: Object
+        },
         messageItem: {
             Type: Object
         },

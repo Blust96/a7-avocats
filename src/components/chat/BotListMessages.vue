@@ -4,6 +4,7 @@
             v-for="(listMessage, index) in listMessages"
             :key="index"
             :listMessage="listMessage"
+            :navigation="navigation"
         />
     </scroll-view>
 </template>
@@ -22,6 +23,9 @@ import BotListMessage from './BotListMessage';
 export default {
     components: { BotListMessage },
     props: {
+        navigation: {
+            type: Object
+        },
         listMessages: {
             Type: Array
         },

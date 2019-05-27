@@ -7,6 +7,7 @@
             :loadingUserMessage="loadingUserMessage"
             :loadingBotMessage="loadingBotMessage"
             :lastMessage="index + 1 === messages.length"
+            :navigation="navigation"
         />
     </scroll-view>
 </template>
@@ -25,6 +26,9 @@ import Message from './Message';
 export default {
     components: { Message },
     props: {
+        navigation: {
+            type: Object
+        },
         messages: {
             Type: Array
         },

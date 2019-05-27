@@ -18,13 +18,13 @@ import { mapActions } from 'vuex';
 export default {
     methods: {
         submitAppointment: function(listMessageValue) {
-            alert(listMessageValue);
+            this.navigation.navigate('Appointment', { listMessageValue })
         },
-        ...mapActions('chat', [
-            'sendMessage'
-        ])
     },
     props: {
+        navigation: {
+            type: Object
+        },
         listMessage: {
             type: Object
         }

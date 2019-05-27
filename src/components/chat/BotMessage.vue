@@ -13,7 +13,7 @@
         <bot-text-message v-else-if="message.type == 'text'" :lastMessage="lastMessage" :loadingBotMessage="loadingBotMessage">
             {{ message.content }}
         </bot-text-message>
-        <bot-list-messages v-else-if="message.type == 'list'" :listMessages="message.content.elements" />
+        <bot-list-messages v-else-if="message.type == 'list'" :listMessages="message.content.elements" :navigation="navigation" />
     </view>
 </template>
 
@@ -31,6 +31,9 @@ import BotListMessages from './BotListMessages';
 export default {
     components: { BotTextMessage, BotLoadingMessage, BotListMessages },
     props: {
+        navigation: {
+            type: Object
+        },
         message: {
             Type: Object
         },

@@ -6,6 +6,7 @@
             :messages="messages"
             :loadingUserMessage="loadingUserMessage"
             :loadingBotMessage="loadingBotMessage"
+            :navigation="navigation"
         />
         <view v-if="isChatReady" class="keyboard">
             <scroll-view horizontal="true" class="quick-replies-container" keyboardShouldPersistTaps="always">
@@ -52,6 +53,11 @@ export default {
         return {
             messageContent: '',
         };
+    },
+    props: {
+        navigation: {
+            type: Object
+        },
     },
     created: function() {
         this.loadConversationId();
