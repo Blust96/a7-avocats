@@ -25,9 +25,18 @@
                     v-model="messageContent"
                 />
                 <font-awesome
-                    :on-press="() => submitMessage()"
+                    :on-press="() => 
+                        loadingUserMessage
+                        ? null
+                        : messageContent !== ''
+                        ? submitMessage()
+                        : null"
                     name="send"
-                    :style="{marginLeft: 20}"
+                    :style="{marginLeft: 20, opacity: loadingUserMessage
+                        ? 0.4
+                        : messageContent !== ''
+                        ? 1
+                        : 0.4}"
                     :size=30
                     color="#7aca7c"
                 />
