@@ -43,6 +43,7 @@ export default {
 <style>
 .container {
     flex: 1;
+    margin-top: 20px;
     padding-top: 60px;
     padding-right: 10px;
     padding-left: 10px;
