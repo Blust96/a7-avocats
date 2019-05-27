@@ -19,5 +19,6 @@ export default {
 <style>
 .container {
     flex: 1;
+    padding-top: 60px;
 }
 </style>

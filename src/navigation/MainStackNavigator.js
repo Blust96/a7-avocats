@@ -51,7 +51,25 @@ const MainStackNavigator = StackNavigator(
         Appointment: { 
             screen: AppointmentScreen,
             navigationOptions: {
-                title: 'Prise de rendez-vous'
+                title: 'Prise de rendez-vous',
+                headerStyle: {
+                    position: 'absolute',
+                    zIndex: 100,
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: '#ffffff',
+                    borderBottomWidth: 0,
+                    borderBottomRightRadius: '20px',
+                    borderBottomLeftRadius: '20px',
+                    shadowColor: '#000000',
+                    shadowOpacity: 0.1,
+                    shadowRadius: 18,
+                },
+                headerTintColor: '#7aca7c',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                },
             }
         },
         FolderTracking: {

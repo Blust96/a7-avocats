@@ -4,7 +4,11 @@
         :on-press="() => submitAppointment(listMessage.buttons[0].value)"
     >
         <view class="listMessage-icon-container">
-
+            <material-icons
+                name="call"
+                :size=30
+                color="#ffffff"
+            />
         </view>
         <text class="listMessage-button-title">{{ listMessage.title }}</text>
         <text class="listMessage-button-text">{{ listMessage.subtitle }}</text>
@@ -14,6 +18,7 @@
 <script>
 
 import { mapActions } from 'vuex';
+import { FontAwesome, MaterialIcons, Entypo } from '@expo/vector-icons';
 
 export default {
     methods: {
@@ -28,7 +33,8 @@ export default {
         listMessage: {
             type: Object
         }
-    }
+    },
+    components: { FontAwesome, MaterialIcons, Entypo }
 }
 </script>
 
@@ -49,7 +55,8 @@ export default {
 
 .listMessage-icon-container {
     backgroundColor: #7aca7c;
-    padding: 15px;
+    justify-content: center;
+    align-items: center;
     height: 70px;
     border-top-left-radius: 5px;
     border-top-right-radius: 20px;
